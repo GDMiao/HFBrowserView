@@ -211,7 +211,7 @@
 		if (pageIndex < (NSUInteger)iFirstIndex || pageIndex > (NSUInteger)iLastIndex) {
 			[_recycledPages addObject:page];
 			[page removeFromSuperview];
-			CSLog(@"Removed page at index %i", HFBrowserViewPAGE_INDEX(page));
+			NSLog(@"Removed page at index %i", HFBrowserViewPAGE_INDEX(page));
 		}
 	}
 	[_visiblePages minusSet:_recycledPages];
@@ -231,7 +231,7 @@
 			[self configurePage:page forIndex:index];
 			[_visiblePages addObject:page];
 			[self addSubview:page];
-			CSLog(@"Added page at index %i", index);
+			NSLog(@"Added page at index %i", index);
             
 		}
 	}
@@ -313,18 +313,18 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-	CSLog(@"scrollViewWillBeginDragging");
+	NSLog(@"scrollViewWillBeginDragging");
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-	CSLog(@"scrollViewDidEndDecelerating");
+	NSLog(@"scrollViewDidEndDecelerating");
     if ([self.dragDelegate respondsToSelector:@selector(browserViewlDidEndDecelerating:pageView:pageIndex:)]) {
         [self.dragDelegate browserViewlDidEndDecelerating:self pageView:[self pageDisplayedAtIndex:_currentPageIndex] pageIndex:_currentPageIndex];
     }
 }
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    CSLog(@"scrollViewDidEndScrollingAnimation");
+    NSLog(@"scrollViewDidEndScrollingAnimation");
     if ([self.dragDelegate respondsToSelector:@selector(browserViewlDidEndScrollingAnimation:pageView:pageIndex:)]) {
         [self.dragDelegate browserViewlDidEndScrollingAnimation:self pageView:[self pageDisplayedAtIndex:_currentPageIndex] pageIndex:_currentPageIndex];
     }
